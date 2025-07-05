@@ -1,0 +1,65 @@
+.card {
+  background-color: #111;
+  padding: 1rem 2rem;
+  border-radius: 1.25rem;
+}
+
+.loader {
+  color: rgb(124, 124, 124);
+  font-weight: 500;
+  font-size: 25px;
+  box-sizing: content-box;
+  height: 120px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.fade-images {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+}
+
+.fade-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  animation: fadeImages 20s infinite;
+}
+
+.fade-img:nth-child(1) {
+  animation-delay: 0s;
+}
+.fade-img:nth-child(2) {
+  animation-delay: 5s;
+}
+.fade-img:nth-child(3) {
+  animation-delay: 10s;
+}
+.fade-img:nth-child(4) {
+  animation-delay: 15s;
+}
+
+@keyframes fadeImages {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
