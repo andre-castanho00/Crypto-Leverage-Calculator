@@ -3,7 +3,7 @@ import ImageLoader from "../imageLoader/imageLoader";
 import "./form.css";
 
 function FormSection() {
-  const [risk, setRisk] = useState(0.1); // 10% by default
+  const [risk, setRisk] = useState(0.1); // 10%
   const [form, setForm] = useState({
     stopLoss: "",
     capital: "",
@@ -15,126 +15,111 @@ function FormSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(form.capital);
-    console.log(form.amountToRisk);
+    const capital = parseFloat(form.capital);
+    const stopLoss = parseFloat(form.stopLoss);
 
-    if (form.capital < form.amountToRisk) {
-      console.log("You cannot risk more than your capital");
+    // fallback if amountToRisk is empty
+    const amountToRisk =
+      form.amountToRisk === ""
+        ? parseFloat((capital * risk).toFixed(DECIMALS_TO_ROUND))
+        : parseFloat(form.amountToRisk);
+
+    if (capital < amountToRisk) {
+      alert("You cannot risk more than your capital");
       return;
     }
 
-    if (form.amountToRisk === "") {
-      setForm({
-        ...form,
-        amountToRisk: calculateRisk(),
-      });
-    }
+    const amountNeeded = (amountToRisk * 100) / stopLoss;
+    const newLeverage = (amountNeeded / capital).toFixed(DECIMALS_TO_ROUND);
 
-    let aux = (form.amountToRisk * 100) / form.stopLoss;
-    let newLeverage = (aux / form.capital).toFixed(DECIMALS_TO_ROUND);
+    setForm((prev) => ({
+      ...prev,
+      amountToRisk: amountToRisk.toFixed(DECIMALS_TO_ROUND),
+    }));
 
     setLeverage(newLeverage);
-
-    console.log(
-      `For a wallet value of ${form.capital}€ and a stop loss of ${form.stopLoss}%, risking a total of ${form.amountToRisk}€.`
-    );
-    console.log(`Your leverage should be aroung ${newLeverage}x`);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setForm({
       ...form,
       [name]: value === "" ? "" : parseFloat(value),
     });
   };
 
-  const calculateRisk = () => {
-    return (form.capital * risk).toFixed(DECIMALS_TO_ROUND);
-  };
+  const renderForm = () => (
+    <form className="calc-form" onSubmit={handleSubmit}>
+      <div className="form-item">
+        <label htmlFor="stop-loss">
+          Stop loss percentage <span style={{ color: "#f7931a" }}>*</span>
+        </label>
+        <input
+          id="stop-loss"
+          name="stopLoss"
+          type="number"
+          step={0.01}
+          min={0.01}
+          required
+          value={form.stopLoss}
+          onChange={handleChange}
+          placeholder="Input percentage value (e.g 1.5%)"
+        />
+      </div>
 
-  const renderForm = () => {
-    return (
-      <form className="calc-form" onSubmit={handleSubmit}>
-        <div className="form-item">
-          <label htmlFor="stop-loss">
-            Stop loss percentage <span style={{ color: "#f7931a" }}>*</span>
-          </label>
-          <input
-            id="stop-loss"
-            name="stopLoss"
-            type="number"
-            min={0.01}
-            step={0.01}
-            placeholder="Input percentage value (e.g 1.5%)"
-            required
-            value={form.stopLoss}
-            onChange={handleChange}
-          />
-        </div>
+      <div className="form-item">
+        <label htmlFor="capital">
+          Capital to enter the trade <span style={{ color: "#f7931a" }}>*</span>
+        </label>
+        <input
+          id="capital"
+          name="capital"
+          type="number"
+          min={10}
+          required
+          value={form.capital}
+          onChange={handleChange}
+          placeholder="Input amount to trade (e.g 1000€)"
+        />
+      </div>
 
-        <div className="form-item">
-          <label htmlFor="capital">
-            Capital to enter the trade{" "}
-            <span style={{ color: "#f7931a" }}>*</span>
-          </label>
-          <input
-            id="capital"
-            name="capital"
-            type="number"
-            min={10}
-            placeholder="Input amount to trade (e.g 1000€)"
-            required
-            value={form.capital}
-            onChange={handleChange}
-          />
-        </div>
+      <div className="form-item">
+        <label htmlFor="risk">Amount of capital to risk in this trade</label>
+        <input
+          id="risk"
+          name="amountToRisk"
+          type="number"
+          step={0.1}
+          min={0.1}
+          value={form.amountToRisk}
+          onChange={handleChange}
+          placeholder="Input amount to risk (e.g 100€)"
+        />
+        <legend style={{ fontStyle: "italic", color: "#6d6d6d" }}>
+          Leave this field empty to automatically risk 10% of your capital.
+        </legend>
+      </div>
 
-        <div className="form-item">
-          <label htmlFor="risk">Amount of capital to risk in this trade</label>
-          <input
-            id="risk"
-            name="amountToRisk"
-            type="number"
-            min={0.1}
-            step={0.1}
-            placeholder="Input amount to risk (e.g 100€)"
-            value={form.amountToRisk}
-            onChange={handleChange}
-          />
-          <legend style={{ fontStyle: "italic", color: "#6d6d6d" }}>
-            The capital to risk should be greater than the capital to enter the
-            trade
-          </legend>
-        </div>
+      {leverage && (
+        <>
+          <p>
+            For a wallet value of {form.capital}€ and a stop loss of{" "}
+            {form.stopLoss}%, risking a total of {form.amountToRisk}€.
+          </p>
+          <p>
+            <strong>Your leverage should be around {leverage}x</strong>
+          </p>
+        </>
+      )}
 
-        {leverage && (
-          <>
-            <p>
-              For a wallet value of ${form.capital}€ and a stop loss of $
-              {form.stopLoss}%, risking a total of ${form.amountToRisk}€.
-            </p>
-            <p>
-              <strong>Your leverage should be around {leverage}x</strong>
-            </p>
-          </>
-        )}
-
-        <button className="submit-btn" type="submit">
-          CALCULATE
-        </button>
-      </form>
-    );
-  };
+      <button className="submit-btn" type="submit">
+        Calculate
+      </button>
+    </form>
+  );
 
   return (
     <section className="form-section">
-      {/* <div className="main-container">
-        {renderForm()}
-
-        <ImageLoader />
-      </div> */}
       <div className="form-container">{renderForm()}</div>
       <div className="images-container">
         <ImageLoader />
