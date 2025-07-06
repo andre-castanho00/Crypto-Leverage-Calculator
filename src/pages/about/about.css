@@ -1,0 +1,24 @@
+.about-section {
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 15%;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.about-section h3,
+.about-section h2 {
+  color: var(--btc-color);
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-list li::marker {
+  color: var(--btc-color);
+}

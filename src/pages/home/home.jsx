@@ -5,11 +5,11 @@ import ImageLoader from "../../components/imageLoader/imageLoader";
 
 function Home() {
   return (
-    <>
+    <div className="page"> 
       <Hero />
       <FormSection />
       <Footer />
-    </>
+    </div>
   );
 }
 

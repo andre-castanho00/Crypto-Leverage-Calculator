@@ -54,3 +54,21 @@
 .submit-btn:hover {
   background: var(--btc-color);
 }
+
+.form-section {
+  display: flex;
+  align-items: center;
+  gap: 200px;
+}
+
+.form-container {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.images-container {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}

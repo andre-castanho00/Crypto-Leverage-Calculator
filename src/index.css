@@ -9,8 +9,13 @@
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.4);
   --border-color: #404040;
-  --btc-color: #f7931a;
+
   --main-color-darker: #f1760f;
   --main-color-light: #f9b450;
   --main-color-lighter: #fde9c8;
+
+  --btc-color: #f7931a;
+  --eth-color: #627EEA;
+  --solana-color-start: #D426FC;
+  --solana-color-end: #13EAAB;
 }

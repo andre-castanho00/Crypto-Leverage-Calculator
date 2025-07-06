@@ -129,10 +129,14 @@ function FormSection() {
   };
 
   return (
-    <section>
-      <div className="main-container">
+    <section className="form-section">
+      {/* <div className="main-container">
         {renderForm()}
 
+        <ImageLoader />
+      </div> */}
+      <div className="form-container">{renderForm()}</div>
+      <div className="images-container">
         <ImageLoader />
       </div>
     </section>

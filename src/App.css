@@ -16,6 +16,12 @@ html {
   scroll-behavior: smooth;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
