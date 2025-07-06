@@ -1,5 +1,5 @@
 footer {
-  background: var(--text-light);
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   color: var(--bg-primary);
   text-align: center;
   padding: 2rem 0;

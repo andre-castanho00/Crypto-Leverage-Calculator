@@ -6,14 +6,12 @@
   --text-light: #f0f0f0;
   --accent-primary: #64b5f6;
   --accent-secondary: #42a5f5;
-  --gradient-start: #667eea;
-  --gradient-end: #764ba2;
+  --gradient-start: #627EEA;
+  --gradient-end: #f7931a;
   --card-bg: #2d2d2d;
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.4);
   --border-color: #404040;
-  --frontend-color: #3b82f6;
-  --backend-color: #7354af;
-  --database-color: #10b981;
-  --tools-color: #d97706;
+  --btc-color: #f7931a;
+  --eth-color: #627EEA;
 }
