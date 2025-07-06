@@ -1,9 +1,15 @@
 import Hero from "../../components/hero/hero";
 import Footer from "../../components/footer/footer";
 import "./about.css";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 function About() {
   const renderAbout = () => {
+    useEffect(() => {
+      ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+    }, []);
+
     return (
       <div className="about-section">
         <h2>What is Trading Leverage Calculator?</h2>
