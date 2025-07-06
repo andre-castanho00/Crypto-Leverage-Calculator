@@ -15,18 +15,11 @@ function FormSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log(form.capital);
+    console.log(form.amountToRisk);
+
     if (form.capital < form.amountToRisk) {
       console.log("You cannot risk more than your capital");
-      return;
-    }
-
-    if (form.stopLoss < 0.01) {
-      console.log("Stop loss must be greater than 0.01%");
-      return;
-    }
-
-    if (form.capital < 10) {
-      console.log("Capital must be greater than 10€");
       return;
     }
 
@@ -53,7 +46,7 @@ function FormSection() {
 
     setForm({
       ...form,
-      [name]: value,
+      [name]: value === "" ? "" : parseFloat(value),
     });
   };
 
@@ -122,7 +115,9 @@ function FormSection() {
               For a wallet value of ${form.capital}€ and a stop loss of $
               {form.stopLoss}%, risking a total of ${form.amountToRisk}€.
             </p>
-            <p><strong>Your leverage should be around {leverage}x</strong></p>
+            <p>
+              <strong>Your leverage should be around {leverage}x</strong>
+            </p>
           </>
         )}
 

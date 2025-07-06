@@ -1,6 +1,6 @@
 footer {
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  color: var(--bg-primary);
+  background: var(--main-color-light);
+  color: var(--text-primary);
   text-align: center;
   padding: 2rem 0;
   transition: background-color 0.3s ease, color 0.3s ease;

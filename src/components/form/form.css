@@ -6,6 +6,7 @@
 }
 
 .calc-form {
+  background: var(--main-color-lighter);
   height: 530px;
   width: 400px;
   justify-content: space-evenly;
@@ -13,8 +14,9 @@
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid #f7931a;
+  border: 2px solid var(--main-color-lighter);
   gap: 20px;
+  color: var(--text-primary);
 }
 
 .form-item {
@@ -25,20 +27,24 @@
 
 .form-item input {
   background: inherit;
-  border: 1px solid #f7931a;
+  border: 2px solid var(--btc-color);
   border-radius: 20px;
   padding: 10px;
   padding-left: 15px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 16px;
 }
 
+.form-item label {
+  font-weight: 500;
+}
+
 .submit-btn {
-  background: #f7931a;
+  background: var(--main-color-darker);
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
-  color: #ffffff;
+  color: white;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -46,5 +52,5 @@
 }
 
 .submit-btn:hover {
-  background: #f0992f;
+  background: var(--btc-color);
 }
