@@ -41,6 +41,16 @@ function About() {
             display the result clearly.
           </li>
         </ol>
+
+        <h3>Disclaimer</h3>
+        <p>
+          The Trading Leverage Calculator provided on this website is intended
+          for educational and informational purposes only. It does not
+          constitute financial, investment, or trading advice. Past performance
+          is not indicative of future results. Always consult with a qualified
+          financial advisor before making any trading decisions. Use of this
+          tool is at your own risk.
+        </p>
       </div>
     );
   };

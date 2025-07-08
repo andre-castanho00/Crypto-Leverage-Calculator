@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import "./responsive.css";
 import Home from "./pages/home/home";
 import About from "./pages/about/about";
 import ReactGA from "react-ga4";

@@ -33,11 +33,6 @@
   box-shadow: 0 10px 25px var(--shadow-hover);
 }
 
-/* Sections */
-section {
-  /* padding: 56.5px 0; */
-}
-
 .section-title {
   text-align: center;
   font-size: 2.5rem;

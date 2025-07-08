@@ -9,7 +9,13 @@ function Footer() {
   return (
     <footer>
       <div className="container">
-        <p>© 2025 André Castanho. All rights reserved.</p>
+        <small>
+          <strong>Disclaimer*</strong> This tool is for informational purposes
+          only and does not constitute financial advice. Trading involves
+          significant risk of loss. Always consult a licensed financial advisor.
+        </small>
+
+        <p style={{ marginTop: "1rem" }}>© 2025 André Castanho. All rights reserved.</p>
       </div>
     </footer>
   );
